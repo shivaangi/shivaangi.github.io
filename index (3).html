@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shivangi Sudan — Product Designer</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --yellow: #FFD93D;
+    --yellow-light: #FFF5C2;
+    --pink: #FF6B9D;
+    --pink-light: #FFE0ED;
+    --cream: #FEFDF8;
+    --dark: #1C1C1C;
+    --mid: #3D3D3D;
+    --muted: #8A8A8A;
+    --border: #E8E4DC;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #F0EDE6;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: var(--dark);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 32px 16px;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    background: var(--cream);
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    grid-auto-rows: 1fr;
+    box-shadow: 0 20px 80px rgba(0,0,0,0.18), 0 4px 16px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Decorative top bar */
+  .page::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--yellow) 0%, var(--yellow) 50%, var(--pink) 50%, var(--pink) 100%);
+    z-index: 10;
+  }
+
+  /* ─── LEFT SIDEBAR ─── */
+  .sidebar {
+    background: var(--dark);
+    padding: 44px 24px 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    position: relative;
+    align-self: stretch;
+  }
+
+  .sidebar::after {
+    content: '';
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 60px; height: 60px;
+    background: var(--pink);
+    clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  }
+
+  .name-block h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.1;
+    letter-spacing: -0.3px;
+  }
+
+  .name-block .title {
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--pink);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-top: 8px;
+  }
+
+  .sidebar-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .sidebar-section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--yellow);
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .contact-item {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  .contact-item .clabel {
+    font-size: 7.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+  }
+
+  .contact-item a,
+  .contact-item span {
+    font-size: 9px;
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    word-break: break-all;
+    line-height: 1.4;
+  }
+
+  .contact-item a:hover { color: var(--yellow); }
+
+  /* Skills */
+  .skill-tag {
+    display: inline-block;
+    font-size: 8.5px;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 20px;
+    margin: 2px 2px 0 0;
+    letter-spacing: 0.3px;
+  }
+
+  .skill-tag.yellow { background: var(--yellow); color: var(--dark); }
+  .skill-tag.pink { background: var(--pink); color: #fff; }
+  .skill-tag.outline { border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.65); }
+
+  .skills-wrap { display: flex; flex-wrap: wrap; gap: 0; }
+
+  /* Education */
+  .edu-item { margin-bottom: 10px; }
+  .edu-school {
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.3;
+  }
+  .edu-deg {
+    font-size: 8.5px;
+    color: rgba(255,255,255,0.55);
+    margin-top: 2px;
+    line-height: 1.4;
+  }
+  .edu-year {
+    font-size: 8px;
+    color: var(--pink);
+    margin-top: 3px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: wrap;
+  }
+
+  .edu-badge {
+    display: inline-block;
+    font-size: 7px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: rgba(255,107,157,0.15);
+    color: var(--pink);
+    padding: 1px 6px;
+    border-radius: 20px;
+  }
+
+  /* Language */
+  .lang-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .lang-name { font-size: 9.5px; color: rgba(255,255,255,0.8); font-weight: 500; }
+  .lang-level {
+    font-size: 8px;
+    color: var(--yellow);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  /* Achievement */
+  .achievement {
+    background: rgba(255,217,61,0.1);
+    border: 1px solid rgba(255,217,61,0.2);
+    border-radius: 6px;
+    padding: 8px 10px;
+  }
+  .achievement .award-icon { font-size: 14px; margin-bottom: 4px; display: block; }
+  .achievement p {
+    font-size: 8.5px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.5;
+  }
+  .achievement p strong { color: var(--yellow); font-weight: 600; }
+
+  /* ─── MAIN CONTENT ─── */
+  .main {
+    padding: 44px 32px 40px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  /* About */
+  .about-text {
+    font-size: 9.5px;
+    line-height: 1.7;
+    color: var(--mid);
+    font-weight: 400;
+    font-style: italic;
+    border-left: 3px solid var(--yellow);
+    padding-left: 12px;
+  }
+
+  /* Section headers */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--dark);
+  }
+
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .section-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .section-dot.yellow { background: var(--yellow); }
+  .section-dot.pink { background: var(--pink); }
+
+  /* Experience */
+  .exp-item {
+    margin-bottom: 18px;
+    padding-left: 16px;
+    border-left: 2px solid var(--border);
+    position: relative;
+  }
+
+  .exp-item::before {
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: 2px;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--yellow);
+    border: 2px solid var(--cream);
+    box-sizing: border-box;
+  }
+
+  .exp-item::before { background: var(--yellow); }
+  .exp-item.dot-pink::before { background: var(--pink); }
+  .exp-item.dot-dark::before { background: #555; }
+
+  .exp-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 2px;
+  }
+
+  .exp-role {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.2;
+  }
+
+  .exp-date {
+    font-size: 8px;
+    font-weight: 600;
+    color: var(--muted);
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    padding-top: 1px;
+  }
+
+  .exp-company {
+    font-size: 9px;
+    color: var(--pink);
+    font-weight: 600;
+    margin-bottom: 6px;
+    letter-spacing: 0.3px;
+  }
+
+  .exp-company span {
+    color: var(--muted);
+    font-weight: 400;
+    font-size: 8.5px;
+  }
+
+  .exp-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .exp-bullets li {
+    font-size: 8.8px;
+    color: var(--mid);
+    line-height: 1.55;
+    padding-left: 12px;
+    position: relative;
+  }
+
+  .exp-bullets li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--yellow);
+    font-weight: 700;
+    line-height: 1.55;
+  }
+
+  /* Projects */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    align-items: start;
+  }
+
+  .project-card {
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    position: relative;
+    overflow: hidden;
+    background: var(--cream);
+    transition: border-color 0.2s;
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+
+  .project-card.card-yellow::before { background: var(--yellow); }
+  .project-card.card-pink::before { background: var(--pink); }
+  .project-card.card-dark::before { background: var(--dark); }
+
+  .project-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 10.5px;
+    font-weight: 800;
+    color: var(--dark);
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+
+  .project-tag {
+    display: inline-block;
+    font-size: 7px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 20px;
+    margin-bottom: 6px;
+  }
+
+  .project-tag.yellow { background: var(--yellow-light); color: #8A6A00; }
+  .project-tag.pink { background: var(--pink-light); color: #C0185D; }
+  .project-tag.dark { background: #EEECEA; color: var(--mid); }
+
+  .project-desc {
+    font-size: 8.5px;
+    color: var(--mid);
+    line-height: 1.55;
+  }
+
+  .project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    text-decoration: none;
+    margin-top: 7px;
+    padding: 3px 8px;
+    border-radius: 20px;
+    transition: opacity 0.15s;
+  }
+  .project-link:hover { opacity: 0.75; }
+  .project-link.yellow { background: var(--yellow-light); color: #8A6A00; }
+  .project-link.pink { background: var(--pink-light); color: #C0185D; }
+  .project-link.dark { background: #EEECEA; color: var(--mid); }
+
+  @media print {
+    body { background: none; padding: 0; }
+    .page { box-shadow: none; width: 100%; min-height: 100vh; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ─── SIDEBAR ─── -->
+  <aside class="sidebar">
+
+    <div class="name-block">
+      <h1>Shivangi<br>Sudan</h1>
+      <p class="title">Product Designer</p>
+    </div>
+
+    <div class="sidebar-section">
+      <p class="sidebar-section-title">Contact</p>
+      <div class="contact-item">
+        <span class="clabel">Phone</span>
+        <span>+91 9565245783</span>
+      </div>
+      <div class="contact-item">
+        <span class="clabel">Email</span>
+        <a href="mailto:sudanshivangi@gmail.com">sudanshivangi@gmail.com</a>
+      </div>
+      <div class="contact-item">
+        <span class="clabel">LinkedIn</span>
+        <a href="https://linkedin.com/in/shivangisudan">linkedin.com/in/shivangisudan</a>
+      </div>
+      <div class="contact-item">
+        <span class="clabel">Portfolio</span>
+        <a href="https://shivangi.framer.ai">shivangi.framer.ai</a>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <p class="sidebar-section-title">Skills</p>
+      <div class="skills-wrap">
+        <span class="skill-tag yellow">Figma</span>
+        <span class="skill-tag pink">Framer</span>
+        <span class="skill-tag yellow">Rive</span>
+        <span class="skill-tag outline">Canva</span>
+        <span class="skill-tag outline">Google Sketch</span>
+        <span class="skill-tag outline">Python</span>
+        <span class="skill-tag outline">Firebase</span>
+        <span class="skill-tag outline">SQL</span>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <p class="sidebar-section-title">Education</p>
+      <div class="edu-item">
+        <p class="edu-school">10kDesigners</p>
+        <p class="edu-deg">C11 Product Design Cohort</p>
+        <p class="edu-year">Aug – Nov 2025 · India</p>
+      </div>
+      <div class="edu-item">
+        <p class="edu-school">University of the People</p>
+        <p class="edu-deg">B.Sc. Computer Science</p>
+        <p class="edu-year">2026 · Pasadena, CA</p>
+      </div>
+      <div class="edu-item">
+        <p class="edu-school">Saint Petersburg State University</p>
+        <p class="edu-deg">B.Sc. Computer Science</p>
+        <p class="edu-year" style="color:var(--muted);font-weight:500;">Discontinued</p>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <p class="sidebar-section-title">Languages</p>
+      <div class="lang-item">
+        <span class="lang-name">English</span>
+        <span class="lang-level">Proficient</span>
+      </div>
+      <div class="lang-item">
+        <span class="lang-name">Hindi</span>
+        <span class="lang-level">Native</span>
+      </div>
+      <div class="lang-item">
+        <span class="lang-name">Russian</span>
+        <span class="lang-level">B1</span>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <p class="sidebar-section-title">Recognition</p>
+      <div class="achievement">
+        <span class="award-icon">🏆</span>
+        <p><strong>Outstanding Performance Award</strong> — NoQs Digital for high-priority project contributions</p>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- ─── MAIN ─── -->
+  <main class="main">
+
+    <!-- About -->
+    <p class="about-text">
+      Software engineer turned product designer — I bring a CS background in systems thinking and data to design products that are intuitive, scalable, and genuinely useful. I love turning complexity into clarity, validating fast, and learning obsessively to sharpen my craft.
+    </p>
+
+    <!-- Experience -->
+    <section>
+      <div class="section-header">
+        <div class="section-dot yellow"></div>
+        <span class="section-title">Experience</span>
+        <div class="section-line"></div>
+      </div>
+
+      <!-- SBNRI -->
+      <div class="exp-item">
+        <div class="exp-top">
+          <p class="exp-role">Product Design Intern</p>
+          <span class="exp-date">May 2026 – Present</span>
+        </div>
+        <p class="exp-company">SBNRI <span>· Fintech · NRI Investing</span></p>
+        <ul class="exp-bullets">
+          <li>Redesigned the mutual fund portfolio screens for NRI investors, making complex holdings, returns, and tax details easy to scan at a glance</li>
+          <li>Designed the tax-filing product end-to-end, from onboarding to paywall, plus a quiz that recommends investments based on a user's risk appetite</li>
+          <li>Analysed the onboarding funnel to find where users dropped off and reworked the flows to lift sign-up and first-investment completion</li>
+        </ul>
+      </div>
+
+      <!-- WhatNot -->
+      <div class="exp-item dot-pink">
+        <div class="exp-top">
+          <p class="exp-role">Communication Design Intern</p>
+          <span class="exp-date">Jan 2026 – Apr 2026</span>
+        </div>
+        <p class="exp-company">WhatNot <span>· Hybrid · 4 mos</span></p>
+        <ul class="exp-bullets">
+          <li>Designed marketing carousels and social media creatives; built a brand kit for the agency's social channels from scratch</li>
+          <li>Led 0→1 social media creative design for client campaign <em>Tokike's Rajdhani Express</em>, end-to-end from concept to delivery</li>
+          <li>Built client website <em>Foot Foundry</em> from 0→1 with minimal client iterations — shipped a polished, production-ready site independently</li>
+        </ul>
+      </div>
+
+      <!-- NoQs Digital -->
+      <div class="exp-item dot-dark">
+        <div class="exp-top">
+          <p class="exp-role">Software Development Engineer Intern</p>
+          <span class="exp-date">Sep 2024 – Jan 2025</span>
+        </div>
+        <p class="exp-company">NoQs Digital Pvt Ltd <span>· India</span></p>
+        <ul class="exp-bullets">
+          <li>Built scalable full-stack applications including an AI-powered Investment Planner (GenAI) and a collaborative Task Management App</li>
+          <li>Managed development cycles, task allocation, and issue resolution across cross-functional teams using agile methodologies</li>
+          <li>Received Outstanding Performance Award + Letter of Recommendation for contributions to high-priority projects</li>
+        </ul>
+      </div>
+
+      <!-- Trainity -->
+      <div class="exp-item">
+        <div class="exp-top">
+          <p class="exp-role">Data Analyst Intern</p>
+          <span class="exp-date">Jun 2024 – Aug 2024</span>
+        </div>
+        <p class="exp-company">Trainity.in <span>· India</span></p>
+        <ul class="exp-bullets">
+          <li>Cleaned and prepared large datasets using SQL and Python for ML model pipelines</li>
+          <li>Applied regression analysis and hypothesis testing; visualised insights using Python libraries</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section>
+      <div class="section-header">
+        <div class="section-dot pink"></div>
+        <span class="section-title">Projects</span>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="projects-grid">
+
+        <div class="project-card card-yellow">
+          <p class="project-name">First Swipe</p>
+          <span class="project-tag yellow">Product Design · Fintech</span>
+          <p class="project-desc">Making credit cards accessible to first-time users — designed as an extension of Google Pay. Simplified the 0→1 credit onboarding experience for the underserved new-to-credit segment in India.</p>
+          <a href="https://drive.google.com/file/d/1imkE_wYmApk-ZIz8oQzLApI8McLFT1Td/view?usp=drive_link" target="_blank" class="project-link yellow">View Case Study ↗</a>
+        </div>
+
+        <div class="project-card card-pink">
+          <p class="project-name">Gamifying Groww</p>
+          <span class="project-tag pink">Product Design · Fintech</span>
+          <p class="project-desc">Added an achievements and milestone system to Groww to make investing more engaging and habit-forming. Designed for Gen Z investors who need motivation to start and stay consistent.</p>
+          <a href="https://gamifying-groww.vercel.app/" target="_blank" class="project-link pink">View Case Study ↗</a>
+        </div>
+
+        <div class="project-card card-dark">
+          <p class="project-name">FootFoundry</p>
+          <span class="project-tag dark">Shopify Website Design</span>
+          <p class="project-desc">Website revamp for a 30+ year old footwear retailer deciding to take it digital. </p>
+          <a href="https://footfoundry-casestudy.vercel.app" target="_blank" class="project-link dark">View Case Study ↗</a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+</div>
+</body>
+</html>
